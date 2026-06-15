@@ -46,6 +46,9 @@ class AdminProductController extends Controller
         ];
 
         $fileName = $request->file('picture')->getClientOriginalName();
+
+        $request->file('picture')->move(public_path('images'), $fileName);
+        
         Product::create([
             'name' => $data['name'],
             'val' => $data['val'],
